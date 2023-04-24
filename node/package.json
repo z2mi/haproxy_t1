@@ -1,0 +1,19 @@
+{
+  "name": "express1",
+  "version": "0.0.1",
+  "description": "",
+  "type": "module",
+  "main": "express1.js",
+  "scripts": {
+    "test": "nodemon express1.js"
+  },
+  "keywords": [],
+  "author": "Zahir Mohsen Moradi",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}

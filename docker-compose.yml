@@ -1,0 +1,96 @@
+version: '3.8'
+services:
+  haproxy:
+    image: haproxy:2.6.12-bullseye
+    container_name: haproxy
+    hostname: haproxy
+    volumes:
+      - "./haproxy:/usr/local/etc/haproxy"
+      - "./run/haproxy:/run/haproxy"
+        #command:
+        #- "haproxy"
+        #- "/usr/local/etc/haproxy/haproxy.cfg"
+    ports:
+      - "8080:80"
+      - "8484:8484"
+    environment:
+      TZ: "Asia/Tehran"
+    networks:
+      hapt:
+  node1:
+    image: node:18.16.0-bullseye
+    container_name: node1
+    hostname: node1
+    working_dir: /code
+    volumes:
+      - "./node:/code"
+    command:
+      - "npm"
+      - "test"
+    ports:
+      - "3001:3000"
+    environment:
+      TZ: "Asia/Tehran"
+    networks:
+      hapt:
+  node2:
+    image: node:18.16.0-bullseye
+    container_name: node2
+    hostname: node2
+    working_dir: /code
+    volumes:
+      - "./node:/code"
+    command:
+      - "npm"
+      - "test"
+    ports:
+      - "3002:3000"
+    environment:
+      TZ: "Asia/Tehran"
+    networks:
+      hapt:
+    
+  node3:
+    image: node:18.16.0-bullseye
+    container_name: node3
+    hostname: node3
+    working_dir: /code
+    volumes:
+      - "./node:/code"
+    command:
+      - "npm"
+      - "test"
+    ports:
+      - "3003:3000"
+    environment:
+      TZ: "Asia/Tehran"
+    networks:
+      hapt:
+  node4:
+    image: node:18.16.0-bullseye
+    container_name: node4
+    hostname: node4
+    working_dir: /code
+    volumes:
+      - "./node:/code"
+    command:
+      - "npm"
+      - "test"
+    ports:
+      - "3004:3000"
+    environment:
+      TZ: "Asia/Tehran"
+    networks:
+      hapt:
+
+networks:
+  hapt:
+    driver: bridge
+    name: hapt
+    driver_opts:
+      com.docker.network.enable_ipv6: "false"
+      com.docker.network.bridge.name: "hapt"
+    ipam:
+      driver: default
+      config:
+       - subnet: 172.31.101.0/24
