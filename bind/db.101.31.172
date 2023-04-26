@@ -1,0 +1,17 @@
+;
+$TTL	604800
+@	IN	SOA	ns1.named.zmmoradi.ir. admin.named.zmmoradi.ir. (
+			      4		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+;
+        IN      NS      ns1.named.zmmoradi.ir.
+        IN      NS      ns2.named.zmmoradi.ir.
+100     IN      PTR     ns1.named.zmmoradi.ir. ; 172.31.101.100
+200     IN      PTR     ns2.named.zmmoradi.ir. ; 172.31.101.200
+11      IN      PTR     node1.named.zmmoradi.ir.
+12      IN      PTR     node2.named.zmmoradi.ir.
+13      IN      PTR     node3.named.zmmoradi.ir.
+14      IN      PTR     node4.named.zmmoradi.ir.

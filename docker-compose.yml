@@ -33,6 +33,7 @@ services:
       TZ: "Asia/Tehran"
     networks:
       hapt:
+        ipv4_address: 172.31.101.11
   node2:
     image: node:18.16.0-bullseye
     container_name: node2
@@ -49,6 +50,7 @@ services:
       TZ: "Asia/Tehran"
     networks:
       hapt:
+        ipv4_address: 172.31.101.12
     
   node3:
     image: node:18.16.0-bullseye
@@ -66,6 +68,7 @@ services:
       TZ: "Asia/Tehran"
     networks:
       hapt:
+        ipv4_address: 172.31.101.13
   node4:
     image: node:18.16.0-bullseye
     container_name: node4
@@ -82,6 +85,42 @@ services:
       TZ: "Asia/Tehran"
     networks:
       hapt:
+        ipv4_address: 172.31.101.14
+  
+  bind1:
+    image: ubuntu/bind9:9.18-22.04_beta
+    container_name: bind1
+    hostname: bind1
+    volumes:
+      - "./bind:/etc/bind"
+      - "./default:/etc/default"
+    ports:
+      - "30053:53/udp"
+      - "30053:53/tcp"
+    environment:
+      TZ: "Asia/Tehran"
+      BIND9_USER: "bind"
+    networks:
+      hapt:
+        ipv4_address: 172.31.101.100
+
+  bind2:
+    image: ubuntu/bind9:9.18-22.04_beta
+    container_name: bind2
+    hostname: bind2
+    volumes:
+      - "./bind2:/etc/bind"
+      - "./default:/etc/default"
+    ports:
+      - "40053:53/udp"
+      - "40053:53/tcp"
+    environment:
+      TZ: "Asia/Tehran"
+      BIND9_USER: "bind"
+    networks:
+      hapt:
+        ipv4_address: 172.31.101.200
+
 
 networks:
   hapt:

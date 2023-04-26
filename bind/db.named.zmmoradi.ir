@@ -1,0 +1,23 @@
+;
+; BIND data file for local loopback interface
+;
+$TTL	604800
+@	IN	SOA	ns1.named.zmmoradi.ir. admin.named.zmmoradi.ir (
+			      6	; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+;
+@	IN	NS	ns1.named.zmmoradi.ir.
+@       IN      NS      ns2.named.zmmoradi.ir.
+ns1     IN      A       172.31.101.100
+ns2     IN      A       172.31.101.200
+node1   IN      A       172.31.101.11
+node2   IN      A       172.31.101.12
+node3   IN      A       172.31.101.13
+node4   IN      A       172.31.101.14
+_nodeservice._tcp 0 IN   SRV 0 1 3000 node1
+_nodeservice._tcp 0 IN   SRV 0 1 3000 node2
+_nodeservice._tcp 0 IN   SRV 0 1 3000 node3
+_nodeservice._tcp 0 IN   SRV 0 1 3000 node4
